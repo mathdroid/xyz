@@ -5,6 +5,7 @@ import Page from '../layouts/main'
 import Post from '../components/Post'
 import PostListItem from '../components/PostListItem'
 import { posts as POSTS } from '../posts'
+import { index } from '../xyz'
 
 class Blog extends Component {
   static async getInitialProps ({pathname, query}) {
@@ -31,6 +32,7 @@ class Blog extends Component {
       <Page>
         <Head>
           <link rel="stylesheet" href="/static/css/gruvbox-dark.css"/>
+          <title>{post && post.title || index.title}</title>
         </Head>
           <div className={'xyz-blog'}>
             {

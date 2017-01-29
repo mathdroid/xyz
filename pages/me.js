@@ -1,9 +1,13 @@
+import Head from 'next/head'
 import Page from '../layouts/main'
 import Post from '../components/Post'
 import { me } from '../xyz'
 
 export default () => (
   <Page>
+    <Head>
+      <title>{me.title}</title>
+    </Head>
     <div className={'xyz-blog'}>
       <Post title={me.title} when={me.published_at} markdown={me.markdown} />
     </div>

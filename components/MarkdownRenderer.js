@@ -9,7 +9,9 @@ export default ({source, className}) => (
       className={className}
       source={source}
       renderers={{
-        link: Link,
+        link: ({href, children}) => {
+          return <Link href={href}><a>{children}</a></Link>
+        },
         code: (props) => {
           return <span><code>`{props.children}`</code></span>
         },

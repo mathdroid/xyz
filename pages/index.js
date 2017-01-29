@@ -1,4 +1,5 @@
 import Link from 'next/prefetch'
+import Head from 'next/head'
 import { index } from '../xyz'
 import Header from '../components/Header'
 import Page from '../layouts/main'
@@ -6,6 +7,9 @@ import Markdown from '../components/MarkdownRenderer'
 
 export default () => (
   <Page>
+    <Head>
+      <title>{index.title}</title>
+    </Head>
     <div className={'xyz-index'}>
       {
         index && index.description && <Markdown className={'xyz-description'} source={index.description} />
