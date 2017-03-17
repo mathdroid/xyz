@@ -24,7 +24,7 @@ export default ({source, className}) => (
             </Highlight>
           )
         },
-        heading: function (props) {
+        heading: (props) => {
           const Heading = `h${props.level}`
           return (
             <Heading key={props.nodeKey} data-sourcepos={props['data-sourcepos']} className={'xyz-heading'}>
