@@ -19,6 +19,6 @@
   "scripts": {
     "dev": "node index",
     "build": "next build",
-    "start": "npm run build && node index"
+    "start": "node index"
   }
 }
