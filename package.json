@@ -19,6 +19,6 @@
   "scripts": {
     "dev": "node index",
     "build": "next build",
-    "start": "node index"
+    "start": "NODE_ENV=production node index"
   }
 }
