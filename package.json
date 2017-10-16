@@ -5,20 +5,23 @@
   "author": "Muhammad Mustadi",
   "license": "MIT",
   "dependencies": {
-    "draft-js": "^0.9.1",
-    "highlight.js": "^9.9.0",
-    "megadraft": "^0.4.12",
-    "next": "beta",
-    "react-draft-wysiwyg": "^1.6.3",
-    "react-highlight": "^0.9.0",
+    "draft-js": "^0.10.3",
+    "highlight.js": "^9.12.0",
+    "megadraft": "^0.4.31",
+    "next": "4.0.4",
+    "react": "16",
+    "react-dom": "16",
+    "react-draft-wysiwyg": "^1.10.12",
+    "react-highlight": "^0.10.0",
     "react-markdown": "^2.4.4",
     "react-md-editor": "^0.2.2",
-    "react-remarkable": "^1.1.1",
-    "react-rte": "^0.11.0"
+    "react-remarkable": "^1.1.3",
+    "react-rte": "^0.15.0"
   },
   "scripts": {
-    "dev": "node index",
-    "build": "next build",
-    "start": "NODE_ENV=production node index"
+    "dev": "next",
+    "build": "next build && next export",
+    "start": "cd out && NODE_ENV=production next start",
+    "deploy": "npm run build && cd out && now out && now alias -A '../now.json'"
   }
 }
