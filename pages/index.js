@@ -1,47 +1,59 @@
-import React from "react";
+import Link from "next/prefetch";
+import Head from "next/head";
+import { index } from "../xyz";
+import Header from "../components/Header";
+import Page from "../layouts/main";
+import Markdown from "../components/MarkdownRenderer";
 
-export default class IndexPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      mainHue: 45
-    };
-  }
-
-  componentDidMount() {
-    const { mainHue } = this.state;
-    this.hueInterval = setInterval(() => {
-      this.setState(prevState => ({
-        mainHue: (prevState.mainHue + 1) % 360
-      }));
-    }, 16);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.hueInterval);
-  }
-
-  render() {
-    const { mainHue } = this.state;
-    return (
-      <div>
-        <h1>Edge Cases</h1>
-        <p>Under maintenance.</p>
-        <style jsx>
-          {`
-            div {
-              font-family: Menlo, Monaco, monospace;
-              margin: 8em 8em;
-            }
-            h1 {
-              color: hsl(${mainHue}, 80%, 70%);
-            }
-            p {
-              color: hsl(${(mainHue + 60) % 360}, 60%, 50%);
-            }
-          `}
-        </style>
-      </div>
-    );
-  }
-}
+export default () => (
+  <Page>
+    <Head>
+      <title>{index.title}</title>
+    </Head>
+    <div className={"xyz-index"}>
+      {index &&
+        index.description && (
+          <Markdown className={"xyz-description"} source={index.description} />
+        )}
+      {index &&
+        index.links && (
+          <nav className={"xyz-index-links"}>
+            {index.links.map(({ href, element }, idx) => (
+              <Link key={idx} href={href}>
+                <a className={"xyz-index-link"}>{element}</a>
+              </Link>
+            ))}
+          </nav>
+        )}
+    </div>
+    <style jsx>
+      {`
+        .xyz-index {
+          max-width: 48em;
+          margin: 0 auto;
+          line-height: 2;
+          padding: 1em;
+          text-align: center;
+          justify-content: center;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          display: flex;
+          flex-direction: column;
+        }
+        .xyz-index-links {
+          margin: 1em;
+          text-align: center;
+        }
+        .xyz-index-link {
+          margin: 0 15px;
+        }
+        :global(.xyz-description) {
+          text-align: center;
+        }
+      `}
+    </style>
+  </Page>
+);
