@@ -1,4 +1,4 @@
-import Link from "next/prefetch";
+import Link from "next/link";
 import Head from "next/head";
 import { index } from "../xyz";
 import Header from "../components/Header";
@@ -19,7 +19,7 @@ export default () => (
         index.links && (
           <nav className={"xyz-index-links"}>
             {index.links.map(({ href, element }, idx) => (
-              <Link key={idx} href={href}>
+              <Link prefetch key={idx} href={href}>
                 <a className={"xyz-index-link"}>{element}</a>
               </Link>
             ))}
